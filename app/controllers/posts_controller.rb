@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      render json: @post.errors.messages
+      render json: { message: "400 Bad Request" }, status: :bad_request
     end
 
   end
