@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kultura</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<ul class="nav nav-pills" style="margin-left:10px">
+  <li role="presentation" class="active"><a href="<%= root_path%>">Home</a></li>
+  <li role="presentation"><a href="/posts">Index</a></li>
+</ul>
+<h1 style="font-family:serif; margin-left:10px"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>Kultura</h1>
+
+<%= yield %>
+
+</body>
+</html>

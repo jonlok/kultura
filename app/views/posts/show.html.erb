@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><span class="label label-warning">Title:</span></strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong><span class="label label-primary">Body:</span></strong>
+  <%= @post.body %>
+</p>
+
+<p>
+  <strong><span class="label label-danger">Tag:</span></strong>
+  <%= @post.tag %>
+</p>
+
+<a class="btn btn-warning" href='<%=edit_post_path(@post) %>'>Edit</a>
+<a class="btn btn-success" href='<%=posts_path %>'>Back</a>
