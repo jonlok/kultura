@@ -3,12 +3,23 @@
    <h1 style="margin-left:15px">  <small>index page</small></h1>
 </div>
 
+<div class="input-group" style="margin-bottom:50px; margin-left:30px">
+  <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: 'form-control' %>
+
+      <%= submit_tag "Search", class: 'btn btn-primary' %>
+
+  <% end %>
+</div>
+
+
+
 <div class="panel panel-danger" style="margin-left:10px">
   <!-- Default panel contents -->
   <div class="panel-heading" style="background-color:pink">Listing of Posts</div>
 
-
- <table class="table">
+<div class="table-responsive">
+ <table class="table table-hover">
    <thead>
     <tr>
       <th style="color:blue">Title</th>
@@ -28,14 +39,16 @@
         <td><%= post.tag %></td>
         <td><a class="btn btn-default" href='<%=post_path(post)%>'>Show</a></td>
         <td><a class="btn btn-warning" href='<%=edit_post_path(post)%>'>Edit</a></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you  sure?' } %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you  sure?' }, class: 'btn btn-danger'  %></td>
       </tr>
      <% end %>
    </tbody>
- </table>
+  </table>
+ </div>
 </div>
 
 <br>
 
-<a class="btn btn-info" href='<%=new_post_path %>'>New Post</a>
+<a class="btn btn-info" href='<%=new_post_path %>' style="margin-left:10px">New Post</a>
+<a class="btn btn-warning" href='<%=posts_path%>'>All Posts</a>
 

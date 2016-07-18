@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
+  mount_devise_token_auth_for 'User', at: 'auth'
+
   root 'static_pages#home'
   resources :posts
+
+  get '/signup', to: 'auth#signup'
+  get '/login', to: 'auth#login'
+
+  get '/secret', to: 'static_pages#secret'
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
