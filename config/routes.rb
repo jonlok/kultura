@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'auth#signup'
   get '/login', to: 'auth#login'
+  get '/logout', to: 'auth#logout'
 
   get '/secret', to: 'static_pages#secret'
 

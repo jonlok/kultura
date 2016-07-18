@@ -3,4 +3,6 @@ class AuthController < ApplicationController
   end
   def login
   end
+  def logout
+  end
 end
