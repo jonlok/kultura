@@ -4,8 +4,6 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
   belongs_to :user
   def self.search(search)
-  where("title ILIKE ?", "%#{search}%")
-  where("tag ILIKE ?", "%#{search}%")
-  where("body ILIKE ?", "%#{search}%")
+    where("title ILIKE '%#{search}%' OR tag ILIKE '%#{search}%' OR body ILIKE '%#{search}%'")
   end
 end
