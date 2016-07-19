@@ -25,6 +25,11 @@
   <%= @post.updated_at.localtime %>
 </p>
 
+<p style='margin-left:10px'>
+  <strong>Image:</strong>
+  <img src="<%= @post.image.url %>" alt= "image" style="width:400px;height:300px">
+</p>
+
 
 
 <a class="btn btn-warning" href='<%=edit_post_path(@post) %>' style='margin-left:10px'>Edit</a>

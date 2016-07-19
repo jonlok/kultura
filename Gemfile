@@ -26,6 +26,7 @@ gem 'unicorn'
 gem  'rails_12factor', group: :production
 gem 'devise_token_auth'
 gem 'omniauth'
+gem 'paperclip', '~> 4.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

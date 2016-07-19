@@ -23,7 +23,13 @@
     #<%= f.label :tag %><br>
     <%= f.text_field :tag %>
   </div>
-  <div class="actions" style="margin-left:10px">
+  <div class="field" style="margin-left:10px;margin-top:20px">
+   <%= f.label :image %> upload <span class="glyphicon glyphicon-camera" aria-hidden="true"></span><br>
+   <%= f.file_field :image %>
+
+  </div>
+
+  <div class="actions" style="margin-left:10px;margin-top:30px">
     <%= f.submit %>
   </div>
 <% end %>

@@ -5,24 +5,24 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    @posts = current_user.posts.all
     if params[:search]
-      @posts = Post.search(params[:search]).order("created_at DESC")
+      @posts = current_user.posts.search(params[:search]).order("created_at DESC")
     else
-      @posts = Post.all.order('created_at DESC')
+      @posts = current_user.posts.all.order('created_at DESC')
     end
     # render json: @posts
     # render :index
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.new
   end
 
   def create
     puts post_params
-    @post = Post.new(post_params)
-
+    # @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
       redirect_to posts_path
     else
@@ -66,10 +66,10 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find_by_id(params[:id])
+    @post = current_user.posts.find_by_id(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:title, :tag, :body, :user_id, :timestamp)
+    params.require(:post).permit(:title, :tag, :body, :user_id, :timestamp, :image)
   end
 end
