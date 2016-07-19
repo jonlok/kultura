@@ -11,19 +11,21 @@
 </p>
 
 <p style='margin-left:10px'>
-  <strong>Tag:</strong>
+  <strong>#Tag:</strong>
   <%= @post.tag %>
 </p>
 
 <p style='margin-left:10px'>
-  <strong>Timestamp:</strong>
-  <%= @post.timestamp %>
+  <strong>Created at :</strong>
+  <%= @post.created_at.localtime %>
 </p>
 
 <p style='margin-left:10px'>
-  <strong>User ID:</strong>
-  <%= @post.user_id %>
+  <strong>Updated at :</strong>
+  <%= @post.updated_at.localtime %>
 </p>
+
+
 
 <a class="btn btn-warning" href='<%=edit_post_path(@post) %>' style='margin-left:10px'>Edit</a>
 <a class="btn btn-success" href='<%=posts_path %>'>Back</a>

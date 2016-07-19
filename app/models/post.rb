@@ -6,4 +6,8 @@ class Post < ActiveRecord::Base
   def self.search(search)
     where("title ILIKE '%#{search}%' OR tag ILIKE '%#{search}%' OR body ILIKE '%#{search}%'")
   end
+  before_save :generate_timestamp
+  def generate_timestamp
+    self.timestamp = Time.now
+  end
 end
