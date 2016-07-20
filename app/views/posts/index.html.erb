@@ -3,15 +3,20 @@
    <h1 style="margin-left:15px;float:right;margin-right:20px">  <small>User email: <%=current_user.email%></small></h1>
 </div>
 
-<div class="input-group" style="margin-bottom:50px; margin-left:30px">
-  <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: 'form-control' %>
+<div class="row">
+ <div class="col-xs-2">
+  <div class="input-group" style="margin-bottom:50px; margin-left:30px">
+   <span class="input-group-btn">
+     <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
 
-      <%= submit_tag "Submit Search", class: 'btn btn-primary' %>
+     <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: 'form-control' %>
 
-  <% end %>
+     <%= submit_tag "Submit Search", class: 'btn btn-primary' %>
+    <% end %>
+   </span>
+  </div>
+ </div>
 </div>
-
 
 
 <div class="panel panel-danger" style="margin-left:10px">
@@ -45,7 +50,9 @@
       <tr>
         <td><%= current_user.email %></td>
         <td><%= post.title %></td>
-        <td><img src="<%= post.image.url %>" alt= "image" style="width:200px;height:200px"></td>
+        <td>
+            <img src="<%= post.image.url %>" alt= "image" style="width:200px;height:200px" class="thumbnail img-rounded">
+        </td>
         <td><%= post.body %></td>
         <td><%= post.tag %></td>
 
