@@ -18,4 +18,6 @@ class Post < ActiveRecord::Base
     thumb: "100x100>"
    }
    validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  has_many :comments
 end

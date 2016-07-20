@@ -8,13 +8,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<ul class="nav nav-pills" style="margin-left:10px">
+<h3 style="font-family:Georgia,serif; margin-left:10px; display:inline" ><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Kultura</h3>
+<ul class="nav nav-pills" style="margin-left:10px;float:right">
   <li role="presentation"><a href="/signup">Signup</a></li>
   <li role="presentation"><a href="/login">Login</a></li>
   <li role="presentation"><a href="<%= root_path%>">Home</a></li>
   <li role="presentation"><a href="<%= logout_path%>">Logout</a></li>
 </ul>
-<h1 style="font-family:Georgia,serif; margin-left:10px" ><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Kultura</h1>
+
 
 <%= yield %>
 

@@ -5,7 +5,8 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = current_user.posts.all
+    @posts = current_user.posts.includes(:comments)
+    @alluserposts = Post.all
     if params[:search]
       @posts = current_user.posts.search(params[:search]).order("created_at DESC")
     else

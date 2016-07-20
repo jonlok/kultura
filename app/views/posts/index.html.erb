@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 <div class="page-header">
-   <h1 style="margin-left:15px">  <small>Your email: <%=current_user.email%></small></h1>
+   <h1 style="margin-left:15px;float:right;margin-right:20px">  <small>User email: <%=current_user.email%></small></h1>
 </div>
 
 <div class="input-group" style="margin-bottom:50px; margin-left:30px">
   <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: 'form-control' %>
 
-      <%= submit_tag "Search", class: 'btn btn-primary' %>
+      <%= submit_tag "Submit Search", class: 'btn btn-primary' %>
 
   <% end %>
 </div>
@@ -22,7 +22,11 @@
  <table class="table table-hover">
    <thead>
     <tr>
+      <th style="color:red">Post created by:</th>
+
       <th style="color:blue">Title</th>
+
+      <th style="color:blue">Image</th>
 
       <th style="color:red">Body</th>
 
@@ -32,25 +36,34 @@
 
       <th style="color:green">Updated at</th>
 
-      <th style="color:blue">Image</th>
-
-      <!-- <th colspan="3"></th> -->
+      <th style="color:blue">Comments:</th>
     </tr>
    </thead>
 
    <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td><%= current_user.email %></td>
         <td><%= post.title %></td>
+        <td><img src="<%= post.image.url %>" alt= "image" style="width:200px;height:200px"></td>
         <td><%= post.body %></td>
         <td><%= post.tag %></td>
-        <!-- <td><%= post.timestamp %></td> -->
+
         <td><%= post.created_at.localtime %></td>
         <td><%= post.updated_at.localtime %></td>
-        <td><img src="<%= post.image.url %>" alt= "image" style="width:400px;height:300px"></td>
-        <td><a class="btn btn-default" href='<%=post_path(post)%>'>Show</a></td>
-        <td><a class="btn btn-warning" href='<%=edit_post_path(post)%>'>Edit</a></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you  sure?' }, class: 'btn btn-danger'  %></td>
+        <td>
+          <% post.comments.each do |comment| %>
+            <%=comment.content %>
+          <% end %>
+        </td>
+
+      </tr>
+      <tr>
+
+        <td><a class="btn btn-warning" href='<%=edit_post_path(post)%>'>Edit Post</a></td>
+        <td colspan="2"><a class="btn btn-default" href='<%=post_path(post)%>'>Show Post</a></td>
+        <td colspan="2"><a class="btn btn-info" href='<%=new_post_comment_path(post)%>'>Add Comments</a></td>
+        <td colspan="3"><%= link_to 'Destroy Post', post, method: :delete, data: { confirm: 'Are you  sure?' }, class: 'btn btn-danger'  %></td>
       </tr>
      <% end %>
    </tbody>

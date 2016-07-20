@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
 
   root 'static_pages#home'
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   get '/signup', to: 'auth#signup'
   get '/login', to: 'auth#login'
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
 
   get '/secret', to: 'static_pages#secret'
 
+  # resources :comments
 
+  # resources :posts
 
 
   # The priority is based upon order of creation: first created -> highest priority.
