@@ -60,7 +60,10 @@
         <td><%= post.updated_at.localtime %></td>
         <td>
           <% post.comments.each do |comment| %>
-            <%=comment.content %>
+            <ul>
+            <li><span style='color:darkolivegreen;font-weight:bold'>Comments content: </span><%=comment.content %></li>
+            <li><span style='color:darkolivegreen;font-weight:bold'>commented by user: </span><%=comment.user.email %></li>
+            </ul>
           <% end %>
         </td>
 
