@@ -69,11 +69,12 @@
 
       </tr>
       <tr>
-
-        <td><a class="btn btn-warning" href='<%=edit_post_path(post)%>'>Edit Post</a></td>
-        <td colspan="2"><a class="btn btn-default" href='<%=post_path(post)%>'>Show Post</a></td>
-        <td colspan="2"><a class="btn btn-info" href='<%=new_post_comment_path(post)%>'>Add Comments</a></td>
-        <td colspan="3"><%= link_to 'Destroy Post', post, method: :delete, data: { confirm: 'Are you  sure?' }, class: 'btn btn-danger'  %></td>
+        <% if post.user.email == current_user.email %>
+          <td><a class="btn btn-warning" href='<%=edit_post_path(post)%>'>Edit Post</a></td>
+          <td colspan="2"><a class="btn btn-default" href='<%=post_path(post)%>'>Show Post</a></td>
+          <td colspan="4"><%= link_to 'Destroy Post', post, method: :delete, data: { confirm: 'Are you  sure?' }, class: 'btn btn-danger'  %></td>
+        <% end %>
+        <td colspan="1" style="background-color:brown"><a class="btn btn-info" href='<%=new_post_comment_path(post)%>'>Add Comments</a></td>
       </tr>
      <% end %>
    </tbody>
