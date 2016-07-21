@@ -8,9 +8,9 @@ class PostsController < ApplicationController
     @posts = current_user.posts.includes(:comments)
     @alluserposts = Post.all
     if params[:search]
-      @posts = current_user.posts.search(params[:search]).order("created_at DESC")
+      @alluserposts = Post.all.search(params[:search]).order("created_at DESC")
     else
-      @posts = current_user.posts.all.order('created_at DESC')
+      @alluserposts = Post.all.order('created_at DESC')
     end
     # render json: @posts
     # render :index
